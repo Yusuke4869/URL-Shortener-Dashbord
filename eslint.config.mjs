@@ -3,9 +3,10 @@ import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 import pluginJsxA11y from "eslint-plugin-jsx-a11y";
-import pluginImport from "eslint-plugin-import";
-import prettier from "eslint-config-prettier";
 import pluginNext from "@next/eslint-plugin-next";
+import pluginImport from "eslint-plugin-import";
+import pluginStorybook from "eslint-plugin-storybook";
+import prettier from "eslint-config-prettier";
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -103,5 +104,6 @@ export default [
       },
     },
   },
+  ...pluginStorybook.configs["flat/recommended"],
   prettier,
 ];

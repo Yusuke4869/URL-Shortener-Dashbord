@@ -42,3 +42,4 @@ prepare-commit-msg
 
 # storybook
 storybook-static/
+*storybook.log
