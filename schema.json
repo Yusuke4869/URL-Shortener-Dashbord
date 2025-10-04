@@ -1,0 +1,231 @@
+{
+  "openapi": "3.1.0",
+  "info": { "version": "latest", "title": "URL Shortener API" },
+  "servers": [{ "url": "/api" }],
+  "security": [{ "X-API-Key": [] }],
+  "tags": [
+    {
+      "name": "items",
+      "description": "アイテム関連の操作を行います。\n\nアイテムとは、短縮URLの情報を保持するオブジェクトです。\n\n短縮URLが無効化されている場合、ユーザーがアクセスしても 404 が返されます\n"
+    }
+  ],
+  "components": {
+    "securitySchemes": { "X-API-Key": { "type": "apiKey", "in": "header", "name": "X-API-Key" } },
+    "schemas": {
+      "Item": {
+        "type": "object",
+        "properties": {
+          "param": { "type": "string", "description": "アイテムの識別子（短縮URLの識別子）", "example": "example" },
+          "description": { "type": "string", "description": "アイテムの説明", "example": "This is an example item." },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "リダイレクト先のURL (HTTP)",
+            "example": "https://example.com"
+          },
+          "count": { "type": "integer", "minimum": 0, "description": "短縮URLへのアクセス回数", "example": 42 },
+          "unavailable": { "type": "boolean", "description": "短縮URLが無効化されているかどうか", "example": false }
+        },
+        "required": ["param", "url", "count", "unavailable"]
+      },
+      "Items": { "type": "array", "items": { "$ref": "#/components/schemas/Item" }, "description": "アイテムの配列" }
+    },
+    "parameters": {}
+  },
+  "paths": {
+    "/all": {
+      "get": {
+        "tags": ["items"],
+        "description": "すべてのアイテムを取得します",
+        "responses": {
+          "200": {
+            "description": "すべてのアイテムを取得しました",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Items" } } }
+          },
+          "401": { "description": "API Key がセットされていないか不正です" },
+          "404": { "description": "指定されたホストが存在しません" }
+        }
+      }
+    },
+    "/items/{param}": {
+      "get": {
+        "tags": ["items"],
+        "description": "指定したアイテムを取得します",
+        "parameters": [
+          {
+            "schema": { "type": "string", "description": "アイテムの識別子（短縮URLの識別子）", "example": "example" },
+            "required": true,
+            "description": "アイテムの識別子（短縮URLの識別子）",
+            "name": "param",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "アイテムを取得しました",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Item" } } }
+          },
+          "401": { "description": "API Key がセットされていないか不正です" },
+          "404": { "description": "指定されたホストまたはアイテムが存在しません" }
+        }
+      },
+      "put": {
+        "tags": ["items"],
+        "description": "指定したアイテムを作成または更新します",
+        "parameters": [
+          {
+            "schema": { "type": "string", "description": "アイテムの識別子（短縮URLの識別子）", "example": "example" },
+            "required": true,
+            "description": "アイテムの識別子（短縮URLの識別子）",
+            "name": "param",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "アイテムの説明",
+                    "example": "This is an example item."
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "リダイレクト先のURL (HTTP)",
+                    "example": "https://example.com"
+                  },
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "アクセス回数（指定した値で上書き）",
+                    "example": 0
+                  }
+                },
+                "required": ["url"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "アイテムを作成または更新しました",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Item" } } }
+          },
+          "401": { "description": "API Key がセットされていないか不正です" },
+          "404": { "description": "指定されたホストが存在しません" }
+        }
+      },
+      "patch": {
+        "tags": ["items"],
+        "description": "指定したアイテムの一部を更新します",
+        "parameters": [
+          {
+            "schema": { "type": "string", "description": "アイテムの識別子（短縮URLの識別子）", "example": "example" },
+            "required": true,
+            "description": "アイテムの識別子（短縮URLの識別子）",
+            "name": "param",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "アイテムの説明",
+                    "example": "This is an example item."
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "リダイレクト先のURL (HTTP)",
+                    "example": "https://example.com"
+                  },
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "アクセス回数（指定した値で上書き）",
+                    "example": 0
+                  },
+                  "unavailable": {
+                    "type": "boolean",
+                    "description": "短縮URLが無効化されているかどうか",
+                    "example": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "アイテムを更新しました",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Item" } } }
+          },
+          "401": { "description": "API Key がセットされていないか不正です" },
+          "404": { "description": "指定されたホストまたはアイテムが存在しません" }
+        }
+      },
+      "delete": {
+        "tags": ["items"],
+        "description": "短縮URLを無効化するか、アイテムをデータベースから削除します",
+        "parameters": [
+          {
+            "schema": { "type": "string", "description": "アイテムの識別子（短縮URLの識別子）", "example": "example" },
+            "required": true,
+            "description": "アイテムの識別子（短縮URLの識別子）",
+            "name": "param",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["true", "false"],
+              "description": "アイテムを完全に削除するかどうか（削除する場合は true）",
+              "example": "false"
+            },
+            "required": false,
+            "description": "アイテムを完全に削除するかどうか（削除する場合は true）",
+            "name": "permanently",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "短縮URLを無効化しました",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    { "$ref": "#/components/schemas/Item" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "unavailable": {
+                          "type": "boolean",
+                          "description": "短縮URLが無効化されているかどうか",
+                          "example": true
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": { "description": "アイテムをデータベースから削除しました" },
+          "401": { "description": "API Key がセットされていないか不正です" },
+          "404": { "description": "指定されたホストまたはアイテムが存在しません" }
+        }
+      }
+    }
+  },
+  "webhooks": {}
+}
