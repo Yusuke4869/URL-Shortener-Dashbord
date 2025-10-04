@@ -11,7 +11,9 @@
     "lint:check": "tsc --noEmit && eslint",
     "fmt": "prettier --write .",
     "fmt:check": "prettier --check .",
-    "check": "tsc --noEmit && eslint && prettier --check ."
+    "check": "tsc --noEmit && eslint && prettier --check .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "packageManager": "pnpm@10.18.0+sha512.e804f889f1cecc40d572db084eec3e4881739f8dec69c0ff10d2d1beff9a4e309383ba27b5b750059d7f4c149535b6cd0d2cb1ed3aeb739239a4284a68f40cfa",
   "dependencies": {
@@ -22,9 +24,16 @@
   "devDependencies": {
     "@eslint/js": "^9.32.0",
     "@next/eslint-plugin-next": "^15.4.5",
+    "@storybook/addon-a11y": "^9.1.10",
+    "@storybook/addon-docs": "^9.1.10",
+    "@storybook/addon-onboarding": "^9.1.10",
+    "@storybook/addon-vitest": "^9.1.10",
+    "@storybook/nextjs-vite": "^9.1.10",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-import-resolver-typescript": "^4.0.0",
@@ -32,10 +41,14 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^6.0.0",
+    "eslint-plugin-storybook": "^9.1.10",
     "lefthook": "^1.8.0",
+    "playwright": "^1.55.1",
     "prettier": "^3.3.3",
     "react-scan": "^0.4.3",
+    "storybook": "^9.1.10",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^8.39.0"
+    "typescript-eslint": "^8.39.0",
+    "vitest": "^3.2.4"
   }
 }
