@@ -2,6 +2,7 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import pluginReactHooks from "eslint-plugin-react-hooks";
+import pluginJsxA11y from "eslint-plugin-jsx-a11y";
 import pluginImport from "eslint-plugin-import";
 import prettier from "eslint-config-prettier";
 import pluginNext from "@next/eslint-plugin-next";
@@ -9,7 +10,7 @@ import pluginNext from "@next/eslint-plugin-next";
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   {
-    ignores: ["node_modules", ".next"],
+    ignores: ["node_modules", ".next", "next-env.d.ts", "eslint.config.mjs"],
   },
   eslint.configs.recommended,
   {
@@ -60,6 +61,7 @@ export default [
       ...pluginReactHooks.configs.recommended.rules,
     },
   },
+  pluginJsxA11y.flatConfigs.recommended,
   {
     files: ["**/*.{js,mjs,ts,tsx}"],
     plugins: {
