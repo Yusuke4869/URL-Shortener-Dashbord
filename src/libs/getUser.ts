@@ -5,6 +5,6 @@ export const getUser = async () => {
   if (!session) return null;
 
   return {
-    email: session.user.email?.toLowerCase(),
+    email: session.user.email?.toLowerCase() ?? null,
   };
 };

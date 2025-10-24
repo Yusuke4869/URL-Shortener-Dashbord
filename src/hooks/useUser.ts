@@ -4,9 +4,9 @@ export const useUser = () => {
   const { user, error, isLoading } = useAuth0User();
 
   return {
-    user: user
+    user: user?.email
       ? {
-          email: user.email?.toLowerCase(),
+          email: user.email.toLowerCase(),
         }
       : null,
     error,
