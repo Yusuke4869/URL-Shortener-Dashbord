@@ -1,4 +1,4 @@
-# URL Shortener Dashbord
+# URL Shortener Dashboard
 
 ## License
 
