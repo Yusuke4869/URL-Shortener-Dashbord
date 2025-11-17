@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@auth0/nextjs-auth0':
         specifier: ^4.11.0
-        version: 4.12.1(next@16.0.3(@babel/core@7.28.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 4.13.0(next@16.0.3(@babel/core@7.28.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@emotion/cache':
         specifier: ^11.14.0
         version: 11.14.0
@@ -133,10 +133,10 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@auth0/nextjs-auth0@4.12.1':
-    resolution: {integrity: sha512-b0bqho+dJeRR6SXRWNNK6G00QF6HHfbpmEheus2vaiS9nDl/83E8gdqKFhvKshyLO0JNYry/6Dc2amOcinlwHw==}
+  '@auth0/nextjs-auth0@4.13.0':
+    resolution: {integrity: sha512-YHh1H9s7Fi42c5k/9C5RnNc7tQYODdQwRy5X/L4doCJvRltEajOwEy7rQ7ERnuSoWd3mgk4YxPjCAMh4Dg1ceA==}
     peerDependencies:
-      next: ^14.2.25 || ^15.2.3
+      next: ^14.2.25 || ^15.2.3 || ^16.0.0
       react: ^18.0.0 || ^19.0.0 || ^19.0.0-0
       react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-0
 
@@ -2536,8 +2536,8 @@ packages:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
 
-  jose@6.1.1:
-    resolution: {integrity: sha512-GWSqjfOPf4cWOkBzw5THBjtGPhXKqYnfRBzh4Ni+ArTrQQ9unvmsA3oFLqaYKoKe5sjWmGu5wVKg9Ft1i+LQfg==}
+  jose@6.1.2:
+    resolution: {integrity: sha512-MpcPtHLE5EmztuFIqB0vzHAWJPpmN1E6L4oo+kze56LIs3MyXIj9ZHMDxqOvkP38gBR7K1v3jqd4WU2+nrfONQ==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -3582,11 +3582,11 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.12
       '@jridgewell/trace-mapping': 0.3.29
 
-  '@auth0/nextjs-auth0@4.12.1(next@16.0.3(@babel/core@7.28.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@auth0/nextjs-auth0@4.13.0(next@16.0.3(@babel/core@7.28.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@edge-runtime/cookies': 5.0.2
       '@panva/hkdf': 1.2.1
-      jose: 6.1.1
+      jose: 6.1.2
       next: 16.0.3(@babel/core@7.28.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       oauth4webapi: 3.8.2
       openid-client: 6.8.1
@@ -6100,7 +6100,7 @@ snapshots:
   jiti@2.6.1:
     optional: true
 
-  jose@6.1.1: {}
+  jose@6.1.2: {}
 
   js-tokens@4.0.0: {}
 
@@ -6353,7 +6353,7 @@ snapshots:
 
   openid-client@6.8.1:
     dependencies:
-      jose: 6.1.1
+      jose: 6.1.2
       oauth4webapi: 3.8.2
 
   optionator@0.9.4:
